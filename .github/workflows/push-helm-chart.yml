@@ -20,14 +20,17 @@ jobs:
       - name: Helm tool installer
         uses: Azure/setup-helm@v1
 
-      - name: Enable experimental Helm features
-        run: export HELM_EXPERIMENTAL_OCI=1
-
       - name: Locally save new Helm chart locally
-        run: helm chart save ./charts/${{ env.CHART_NAME }}/ ghcr.io/tomkerkhove/${{ env.CHART_NAME }}
+        run: |
+          export HELM_EXPERIMENTAL_OCI=1
+          helm chart save ./charts/${{ env.CHART_NAME }}/ ghcr.io/tomkerkhove/${{ env.CHART_NAME }}
 
       - name: Login to GitHub Container Registry
-        run: helm registry login --username tomkerkhove --password ${{ secrets.GITHUB_TOKEN }}  ghcr.io/tomkerkhove
+        run: |
+          export HELM_EXPERIMENTAL_OCI=1
+          helm registry login --username tomkerkhove --password ${{ secrets.GITHUB_TOKEN }}  ghcr.io/tomkerkhove
 
       - name: Push Helm chart to GitHub Container Registry
-        run: helm chart push ghcr.io/tomkerkhove/${{ env.CHART_NAME }}:0.1.0
+        run: |
+          export HELM_EXPERIMENTAL_OCI=1
+          helm chart push ghcr.io/tomkerkhove/${{ env.CHART_NAME }}:0.1.0
