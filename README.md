@@ -1,2 +1,2 @@
-# GitHub Template
-GitHub template for all my future GitHub repos
+# Helm & GitHub Container Registry Sandbox
+Sandbox to play around with Helm & GitHub Container Registry.
