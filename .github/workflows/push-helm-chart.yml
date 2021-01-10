@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  CHART_NAME: ghcr.io/tomkerkhove/ghcr-example-chart
+  CHART_NAME: ghcr-example-chart
 
 jobs:
   build_and_push:
