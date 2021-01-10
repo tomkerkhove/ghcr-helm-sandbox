@@ -24,7 +24,7 @@ jobs:
         run: export HELM_EXPERIMENTAL_OCI=1
 
       - name: Locally save new Helm chart locally
-        run: helm chart save .\charts\${{ env.CHART_NAME }}\ ghcr.io/tomkerkhove/${{ env.CHART_NAME }}
+        run: helm chart save ./charts/${{ env.CHART_NAME }}/ ghcr.io/tomkerkhove/${{ env.CHART_NAME }}
 
       - name: Login to GitHub Container Registry
         run: helm registry login --username tomkerkhove --password ${{ secrets.GITHUB_TOKEN }}  ghcr.io/tomkerkhove
